@@ -26,6 +26,6 @@ WhatIDo:
 USRNAME\nIf you haven't read the course guidelines yet --- do it right now!\nINPUT
 
 where in my case USRNAME=guy.pelc
-and INPUT is the input i entered when running the function from the terminal.
+and INPUT is the input I entered when running the function from the terminal.
 
-3) closes the file OS2018, then removes the directories "To" and "Welcome"
+3) closes and removes the file OS2018, then removes the directories "To" and "Welcome"
