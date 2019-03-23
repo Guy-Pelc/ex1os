@@ -24,8 +24,8 @@ double osm_operation_time(unsigned int iterations){
     if (iterations == 0) {iterations = 1000;}
     unsigned int j = 0;
     unsigned int a = 0;
-    try {
-        gettimeofday( &t, nullptr);
+
+        if (gettimeofday( &t, nullptr) == -1) {return -1;}
         while (j < iterations){
 
 
@@ -86,16 +86,13 @@ double osm_operation_time(unsigned int iterations){
 
             j += 50;
         }
-        gettimeofday( &t2, nullptr);
-    }
-    catch (exception &e){
-        return -1;
-    }
+        if (gettimeofday( &t2, nullptr) == -1) {return -1;}
+
     if (a) {}
 
 
-    double diff = double(t2.tv_usec-t.tv_usec)*1000/j;
-    return diff;
+    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
+    return (diff > 0 ? diff : -1);
 
 }
 void empty_function(){}
@@ -106,7 +103,7 @@ double osm_function_time(unsigned int iterations){
     unsigned int j = 0;
 
     try {
-        gettimeofday( &t, nullptr);
+        if (gettimeofday( &t, nullptr) == -1) {return -1;} ;
         while (j < iterations){
 
             empty_function();
@@ -166,15 +163,15 @@ double osm_function_time(unsigned int iterations){
 
             j += 50;
         }
-        gettimeofday( &t2, nullptr);
+        if (gettimeofday( &t2, nullptr)==-1){return -1;};
     }
     catch (exception &e){
         return -1;
     }
 
 
-    double diff = double(t2.tv_usec-t.tv_usec)*1000/j;
-    return diff;
+    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
+    return (diff > 0 ? diff : -1);
 
 }
 
@@ -186,8 +183,7 @@ double osm_syscall_time(unsigned int iterations){
     if (iterations == 0) {iterations = 1000;}
     unsigned int j = 0;
 
-    try {
-        gettimeofday( &t, nullptr);
+        if (gettimeofday( &t, nullptr) == -1) {return -1;};
         while (j < iterations){
 
             OSM_NULLSYSCALL;
@@ -247,15 +243,11 @@ double osm_syscall_time(unsigned int iterations){
 
             j += 50;
         }
-        gettimeofday( &t2, nullptr);
-    }
-    catch (exception &e){
-        return -1;
-    }
+        if (gettimeofday( &t2, nullptr) == -1){return -1;};
 
 
-    double diff = double(t2.tv_usec-t.tv_usec)*1000/j;
-    return diff;
+    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
+    return (diff > 0 ? diff : -1);
 }
 
 
