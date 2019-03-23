@@ -1,0 +1,31 @@
+guy.pelc
+Guy Pelc (203552823)
+EX: 1
+
+FILES:
+osm.cpp -- implementation of the osm library.
+results.png -- graph of the results.
+Makefile
+README
+
+REMARKS:
+1) in the osm implementation, the number of iterations are rounded up by 50 due to the loop unrolling
+2) the results in the graph were calculated by an average of 10^6 iterations.
+
+ANSWERS:
+
+Assignment 1:
+WhatIDo:
+-requires a single input, let us call it INPUT
+-let us call my username USRNAME
+
+1) creates a set of directories and a file:
+/Welcome/To/OS2018
+
+2) in the file OS2018 writes:
+USRNAME\nIf you haven't read the course guidelines yet --- do it right now!\nINPUT
+
+where in my case USRNAME=guy.pelc
+and INPUT is the input i entered when running the function from the terminal.
+
+3) closes the file OS2018, then removes the directories "To" and "Welcome"

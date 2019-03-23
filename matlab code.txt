@@ -1,0 +1,24 @@
+y =
+
+    1.3000   69.9000  525.2000
+    0.3000    1.7000  389.1000
+    0.3000    1.7000  386.4000
+
+>> bar x,y
+Error using bar (line 127)
+Input arguments must be numeric, datetime, duration or categorical.
+ 
+>> bar (x,y)
+>> set (gca, 'YScale', 'log')
+>> y = transpose(y)
+
+y =
+
+    1.3000    0.3000    0.3000
+   69.9000    1.7000    1.7000
+  525.2000  389.1000  386.4000
+
+>> bar (x,y)
+>> set (gca, 'YScale', 'log')
+>> legend
+>> 
