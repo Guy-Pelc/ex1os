@@ -103,8 +103,8 @@ double osm_operation_time(unsigned int iterations){
     if (a) {}
 
 
-    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
-    return (diff >= 0 ? diff : -1);
+    double diff = ((t2.tv_usec-t.tv_usec)+((t2.tv_sec-t.tv_sec)*1000000))*(1000./j);
+    return diff;
 
 }
 
@@ -124,7 +124,6 @@ double osm_function_time(unsigned int iterations){
     if (iterations == 0) {iterations = 1000;}
     unsigned int j = 0;
 
-    try {
         if (gettimeofday( &t, nullptr) == -1) {return -1;} ;
         while (j < iterations){
 
@@ -186,14 +185,12 @@ double osm_function_time(unsigned int iterations){
             j += 50;
         }
         if (gettimeofday( &t2, nullptr)==-1){return -1;};
-    }
-    catch (exception &e){
-        return -1;
-    }
+ 
 
 
-    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
-    return (diff >= 0 ? diff : -1);
+
+    double diff = ((t2.tv_usec-t.tv_usec)+((t2.tv_sec-t.tv_sec)*1000000))*(1000./j);
+    return diff;
 
 }
 
@@ -273,8 +270,8 @@ double osm_syscall_time(unsigned int iterations){
         if (gettimeofday( &t2, nullptr) == -1){return -1;};
 
 
-    double diff = long(double(t2.tv_usec-t.tv_usec))*(1000./j);
-    return (diff >= 0 ? diff : -1);
+    double diff = ((t2.tv_usec-t.tv_usec)+((t2.tv_sec-t.tv_sec)*1000000))*(1000./j);
+    return diff;
 }
 
 
